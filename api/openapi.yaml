@@ -1,0 +1,357 @@
+openapi: 3.0.1
+info:
+  title: Gestión de Usuarios API
+  description: API para la gestión de iHelemt
+  contact:
+    name: Soporte iHelmet
+    email: contacto@ihelmet.com
+  version: "1.0"
+servers:
+- url: /
+paths:
+  /user:
+    post:
+      summary: Creación de un nuevo usuario.
+      description: Creación de un nuevo usuario en el sistema.
+      operationId: createUser
+      parameters:
+      - name: user
+        in: query
+        description: The user to create.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/user'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Default
+  /user/{id}:
+    get:
+      tags:
+      - global
+      summary: Obtiene los datos de un usuario específico.
+      description: Obtiene los datos de un usuario específico.
+      operationId: getUser
+      parameters:
+      - name: id
+        in: path
+        description: id del usuario
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+    put:
+      tags:
+      - global
+      summary: Actualiza los datos de un usuario.
+      description: Actualiza los datos de un usuario.
+      operationId: putUser
+      parameters:
+      - name: id
+        in: path
+        description: actualiza los datos del usuario
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+    delete:
+      tags:
+      - global
+      summary: Da de baja del usuario en la aplicación.
+      description: Da de baja del usuario en la aplicación.
+      operationId: deleteUser
+      parameters:
+      - name: id
+        in: path
+        description: elimina los datos del usuario
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: boolean
+                example: true
+                x-content-type: text/plain
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+  /device/{id}:
+    get:
+      tags:
+      - global
+      summary: Obtiene los datos de un dispositivo específico.
+      description: Obtiene los datos de un dispositivo específico.
+      operationId: getDevice
+      parameters:
+      - name: id
+        in: path
+        description: id del dispositivo
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+    put:
+      tags:
+      - global
+      summary: Actualiza los datos de un disposotivo.
+      description: Actualiza los datos de un dispositivo.
+      operationId: putDevice
+      parameters:
+      - name: id
+        in: path
+        description: actualiza los datos del usuario
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+    delete:
+      tags:
+      - global
+      summary: Da de baja un dispositivo la aplicación.
+      description: Da de baja un dispositivo la aplicación.
+      operationId: deleteDevice
+      parameters:
+      - name: id
+        in: path
+        description: elimina los datos del dispositivo
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: boolean
+                example: true
+                x-content-type: text/plain
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+  /device:
+    post:
+      tags:
+      - global
+      summary: Creación de un nuevo dispositivo.
+      description: Creación de un nuevo dispositivo en la aplicación.
+      operationId: insertDevice
+      responses:
+        "200":
+          description: Device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        "404":
+          description: Not found response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: string
+                example: Not found
+                x-content-type: text/plain
+      x-swagger-router-controller: Global
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          maximum: 999999
+          minimum: 0
+          type: integer
+          description: The user ID.
+        name:
+          type: string
+          description: The user name.
+        email:
+          type: string
+          description: User email
+      example:
+        id: 102012
+        name: Alberto
+        email: albertito@gmail.com
+    Device:
+      type: object
+      properties:
+        id:
+          maximum: 999999
+          minimum: 1
+          type: integer
+          description: User's device
+        device_type:
+          type: string
+          description: Device type
+          enum:
+          - Helmet
+          - Clock
+        userId:
+          type: string
+          description: Owner
+      example:
+        id: 10120
+        device_type: Helmet
+        userId: contacto@ihelmet.com
+    user:
+      required:
+      - email
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+  responses:
+    successful_device:
+      description: Device
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Device'
+    successful_user:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+    successful_bool:
+      description: Successful response
+      content:
+        text/plain:
+          schema:
+            type: boolean
+            example: true
+            x-content-type: text/plain
+    "404NotFound":
+      description: Not found response
+      content:
+        text/plain:
+          schema:
+            title: Endpoint not found
+            type: string
+            example: Not found
+            x-content-type: text/plain

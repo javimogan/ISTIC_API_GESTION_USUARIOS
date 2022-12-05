@@ -19,14 +19,11 @@ jobs:
 
       - name: Install packages
         run: yarn install --frozen-lockfile
-        working-directory: output
         
       - name: Install Railway
         run: npm i -g @railway/cli
-        working-directory: output
         
       - name: Deploy
         run: railway up
-        working-directory: output
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}

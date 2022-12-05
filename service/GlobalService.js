@@ -1,5 +1,7 @@
 'use strict';
-
+const max = 9999
+const min = 0
+const names = ["Raul", "Jaime","Diego", "Daniel","Maria", "Juana", "Pepito", "Paco"]
 
 /**
  * Da de baja un dispositivo la aplicación.
@@ -11,7 +13,7 @@
 exports.deleteDevice = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = true;
+    examples['application/json'] = Math.round(Math.random()) === 1?true:false;
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -31,7 +33,7 @@ exports.deleteDevice = function(id) {
 exports.deleteUser = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = true;
+    examples['application/json'] = Math.round(Math.random()) === 1?true:false;
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -52,9 +54,9 @@ exports.getDevice = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "id" : 10120,
+  "id" : Math.floor(Math.random() * (max - min + 1) + min),
   "device_type" : "Helmet",
-  "userId" : "contacto@ihelmet.com"
+  "userId" : names[Math.floor(Math.random() * (names.length - 0))].toLowerCase()+"@ihelmet.com"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -76,9 +78,9 @@ exports.getUser = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "id" : 102012,
-  "name" : "Alberto",
-  "email" : "albertito@gmail.com"
+  "id" : Math.floor(Math.random() * (max - min + 1) + min),
+  "name" : names[Math.floor(Math.random() * (names.length - 0))],
+  "email" : names[Math.floor(Math.random() * (names.length - 0))].toLowerCase()+"@ihelmet.com"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -99,9 +101,9 @@ exports.insertDevice = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "id" : 10120,
+  "id" : Math.floor(Math.random() * (max - min + 1) + min),
   "device_type" : "Helmet",
-  "userId" : "contacto@ihelmet.com"
+  "userId" : names[Math.floor(Math.random() * (names.length - 0))].toLowerCase()+"@ihelmet.com"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -123,9 +125,9 @@ exports.putDevice = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "id" : 10120,
+  "id" : Math.floor(Math.random() * (max - min + 1) + min),
   "device_type" : "Helmet",
-  "userId" : "contacto@ihelmet.com"
+  "userId" : names[Math.floor(Math.random() * (names.length - 0))].toLowerCase()+"@ihelmet.com"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -147,9 +149,9 @@ exports.putUser = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "id" : 102012,
-  "name" : "Alberto",
-  "email" : "albertito@gmail.com"
+  "id" : Math.floor(Math.random() * (max - min + 1) + min),
+  "name" : names[Math.floor(Math.random() * (names.length - 0))],
+  "email" : names[Math.floor(Math.random() * (names.length - 0))].toLowerCase()+"@ihelmet.com"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
